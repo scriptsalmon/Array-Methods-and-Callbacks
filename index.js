@@ -95,9 +95,10 @@ function getWinnersByYear(array, getYearsCB, getWinnersCB) {
     const winners = getWinnersCB(array, getFinals);
     const years = getYearsCB(array, getFinals);
 
-    return winners.map(function(item, index){
-        return `In ${years[index]}, ${item} won the world cup!`;
-    });
+    // return winners.map(function(item, index){
+    //     return `In ${years[index]}, ${item} won the world cup!`;
+    // });
+    return winners.map((item, index) => `In ${years[index]}, ${item} won the world cup!`);
 }
 
 console.log('task 5', getWinnersByYear(finals2014, getYears, getWinners));
@@ -114,13 +115,15 @@ Use the higher order function getAverageGoals to do the following:
  Example of invocation: getAverageGoals(getFinals(fifaData));
 */
 
-function getAverageGoals(/* code here */) {
-
-   /* code here */
+function getAverageGoals(getFinalsCB) {
+    const averageGoals = getFinalsCB.reduce(function(acc, item){
+        return acc + item['Home Team Goals'] + item['Away Team Goals'];
+    },0);
+    // const averageGoals = getFinalsCB.reduce((item, acc) => (acc + item['Home Team Goals'] + item['Away Team Goals'],0));
+    return (averageGoals / getFinalsCB.length).toFixed(2);
 }
 
-
-
+console.log('task 6', getAverageGoals(getFinals(finals2014)));
 
 /// 🥅 STRETCH 🥅 ///
 
@@ -130,12 +133,13 @@ Create a function called `getCountryWins` that takes the parameters `data` and `
 Hint: Investigate your data to find "team initials"!
 Hint: use `.reduce` */
 
-function getCountryWins(/* code here */) {
-
-    /* code here */
-
+function getCountryWins(data, initials) {
+    // const filteredArray = data.filter(item => initials === item['Home Team Initials'] || item['Away Team Initials']);
+    // console.log(filteredArray);
+    // const worldCupWins = filteredArray.filter()
 }
 
+console.log('stretch', getCountryWins(fifaData, 'GER'));
 
 
 /* 💪💪💪💪💪 Stretch 2: 💪💪💪💪💪 
