@@ -33,13 +33,14 @@ Use getFinals to do the following:
 hint - you should be looking at the stage key inside of the objects
 */
 //data - this will be the fifa data when you pass in your argument - this is an array
-function getFinals(/* code here */) {
-   /* code here */
-    //filter here - to filter through the stage for finals
-
-    //return the array
+function getFinals(data) {
+   const finalsTeams = data.filter(function(item){
+       return item.Stage === 'Final';
+   });
+   return finalsTeams;
 }
 
+console.log('task 2', getFinals(finals2014));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
